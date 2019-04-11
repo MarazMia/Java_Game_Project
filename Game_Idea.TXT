@@ -1,0 +1,17 @@
+Game Name: RED CUTS BLACK
+Game Type: a simple card game
+Game Idea:
+
+The idea behind this game is about a simple card game which is familiar to bengali people as "FUDA".Here 52 card will be presented as usual.If there are 3 players,then
+8 cards will be provided to all players,if it's 4 players then 6 cards will be provided to the all players.After providing the cards,4 cards will be showed on the board and
+the rest of the cards will be remained undiscovered.After finishing previous task,players will be allowed to play their cards.One has to play 1 card on the board first.
+If the given crad has the same value of any card from the board, those two cards will taken by the player and one card will be shown from the deck of the cards that are  
+undiscovered. Now if the card that's shown has anything similar on the board those two cards will be taken by the player as well. Now the turn goes to another player 
+until all the unshown cards are shown.
+--->Face cards have a value of 10
+--->Other cards have the same numerical values exept the Ace of Spades
+--->Only the red cards have points to be counted except for the Ace of Spades which also has a value of 10 
+--->Total points = 180
+--->Winners are the highest points gainers sequencially
+
+   
