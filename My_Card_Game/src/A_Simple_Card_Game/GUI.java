@@ -155,52 +155,102 @@ public class GUI extends javax.swing.JFrame {
        
         //adding button on the board
         p1.setBounds(playergridx + 0 * 83 + 20, playergridy + 15, 83, 120);
+        p1.setBackground(Color.DARK_GRAY);
+        p1.setBorder(null);
+        p1.setOpaque(false);
 
         board.add(p1);
         p2.setBounds(playergridx + 1 * 83 + 20, playergridy + 15, 83, 120);
+        p2.setBackground(Color.DARK_GRAY);
+        p2.setBorder(null);
+        p2.setOpaque(false);
 
         board.add(p2);
         p3.setBounds(playergridx + 2 * 83 + 20, playergridy + 15, 83, 120);
+        p3.setBackground(Color.DARK_GRAY);
+        p3.setBorder(null);
+        p3.setOpaque(false);
 
         board.add(p3);
         p4.setBounds(playergridx + 3 * 83 + 20, playergridy + 15, 83, 120);
+        p4.setBackground(Color.DARK_GRAY);
+        p4.setBorder(null);
+        p4.setOpaque(false);
 
         board.add(p4);
         p5.setBounds(playergridx + 4 * 83 + 20, playergridy + 15, 83, 120);
+        p5.setBackground(Color.DARK_GRAY);
+        p5.setBorder(null);
+        p5.setOpaque(false);
 
         board.add(p5);
         p6.setBounds(playergridx + 5 * 83 + 20, playergridy + 15, 83, 120);
+        p6.setBackground(Color.DARK_GRAY);
+        p6.setBorder(null);
+        p6.setOpaque(false);
 
         board.add(p6);
 
         t1.setBounds(gridx + 0 * 83 + 20, gridy + 15, 83, 120);
+        t1.setBackground(Color.DARK_GRAY);
+        t1.setBorder(null);
+        t1.setOpaque(false);
 
         board.add(t1);
         t2.setBounds(gridx + 1 * 83 + 20, gridy + 15, 83, 120);
+        t2.setBackground(Color.DARK_GRAY);
+        t2.setBorder(null);
+        t2.setOpaque(false);
 
         board.add(t2);
         t3.setBounds(gridx + 2 * 83 + 20, gridy + 15, 83, 120);
+        t3.setBackground(Color.DARK_GRAY);
+        t3.setBorder(null);
+        t3.setOpaque(false);
 
         board.add(t3);
         t4.setBounds(gridx + 3 * 83 + 20, gridy + 15, 83, 120);
+        t4.setBackground(Color.DARK_GRAY);
+        t4.setBorder(null);
+        t4.setOpaque(false);
 
         board.add(t4);
         t5.setBounds(gridx + 4 * 83 + 20, gridy + 15, 83, 120);
+        t5.setBackground(Color.DARK_GRAY);
+        t5.setBorder(null);
+        t5.setOpaque(false);
 
         board.add(t5);
         t6.setBounds(gridx + 5 * 83 + 20, gridy + 15, 83, 120);
+        t6.setBackground(Color.DARK_GRAY);
+        t6.setBorder(null);
+        t6.setOpaque(false);
 
         board.add(t6);
         t7.setBounds(gridx + 6 * 83 + 20, gridy + 15, 83, 120);
+        t7.setBackground(Color.DARK_GRAY);
+        t7.setBorder(null);
+        t7.setOpaque(false);
 
         board.add(t7);
         t8.setBounds(gridx + 7 * 83 + 20, gridy + 15, 83, 120);
+        t8.setBackground(Color.DARK_GRAY);
+        t8.setBorder(null);
+        t8.setOpaque(false);
 
         board.add(t8);
         t9.setBounds(gridx + 8 * 83 + 20, gridy + 15, 83, 120);
+        t9.setBackground(Color.GRAY);
+        t9.setBorder(null);
+        t9.setOpaque(false);
 
         board.add(t9);
         t10.setBounds(gridx + 9 * 83 + 20, gridy + 15, 83, 120);
+        t10.setBackground(Color.GRAY);
+        t10.setBorder(null);
+        t10.setOpaque(false);
+         //t10.setContentAreaFilled(false);
+         //t10.setBorderPainted(false);
 
         board.add(t10);
 
@@ -680,14 +730,7 @@ public class GUI extends javax.swing.JFrame {
                 j++;
             }
 
-            
-            
-            
-            
-            
-            
-            
-            
+    
             
             
             
@@ -872,7 +915,25 @@ public class GUI extends javax.swing.JFrame {
             p4.setIcon(arrbutton[3]);
             p5.setIcon(arrbutton[4]);
             p6.setIcon(arrbutton[5]);
-            if(isempty[0]==false)
+            
+             
+            t1.setIcon(arrbutton1[0]);
+            t2.setIcon(arrbutton1[1]);
+            t3.setIcon(arrbutton1[2]);
+            t4.setIcon(arrbutton1[3]);
+            t5.setIcon(arrbutton1[4]);
+            t6.setIcon(arrbutton1[5]);
+            t7.setIcon(arrbutton1[6]);
+            t8.setIcon(arrbutton1[7]);
+            t9.setIcon(arrbutton1[8]);
+            t10.setIcon(arrbutton1[9]);
+            
+            
+            
+            
+            
+            
+           /* if(isempty[0]==false)
             t1.setIcon(arrbutton1[0]);
             else t1.setIcon(null);
             if(isempty[1]==false)
@@ -901,13 +962,14 @@ public class GUI extends javax.swing.JFrame {
             else t9.setIcon(null);
             if(isempty[9]==false)
             t10.setIcon(arrbutton1[9]);
-            else t10.setIcon(null);
+            else t10.setIcon(null);*/
             
         }
     }
 
     public boolean is(Cards crd) {
         boolean flag = false;
+        int s=board_cards.size();
         for (Cards c : board_cards) {
             if (crd.symbol == c.symbol) {
                 flag = true;
@@ -923,7 +985,7 @@ public class GUI extends javax.swing.JFrame {
             if (crd.symbol == c.symbol) {
                 sum = sum + c.card_value;
               board_cards.remove(j);
-                if(j==0)
+                /*if(j==0)
                     t2.setIcon(null);
                 else if(j==1)
                     t3.setIcon(null);
@@ -931,8 +993,18 @@ public class GUI extends javax.swing.JFrame {
                     t4.setIcon(null);
                 else if(j==3)
                     t5.setIcon(null);
-                 
-                isempty[j]=true;
+                 if(s==1)
+                    t1.setIcon(null);
+                else if(s==2)
+                    t2.setIcon(null);
+                else if(s==3)
+                    t3.setIcon(null);
+                else if(s==4)
+                    t4.setIcon(null);
+                 */
+                
+                //isempty[j]=true;
+                //isempty[s]=true;
                 break;
             }
             j++;
