@@ -5,6 +5,14 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
 public class GUI extends javax.swing.JFrame {
 
@@ -72,12 +80,9 @@ public class GUI extends javax.swing.JFrame {
     ImageIcon imgdi13 = new ImageIcon("Diamonds//D13.png");
 
     ImageIcon[] arrbutton = new ImageIcon[6];
-    ImageIcon[] arrbutton1 = new ImageIcon[10];
-    boolean[] isempty = new boolean[10];
- 
-   
-    
-   
+    ImageIcon[] arrbutton1 = new ImageIcon[20];
+    boolean[] isempty = new boolean[20];
+
     //games windows resulation
     int width = 1366;
     int height = 768;
@@ -85,6 +90,7 @@ public class GUI extends javax.swing.JFrame {
     //Color bgcolor = new Color(39, 119, 20); //background color green
     Font fontcard = new Font("Times New Roman", Font.BOLD, 25);
     Font font = new Font("Times New Roman", Font.BOLD, 25);
+    Font font2 = new Font("Times New Roman", Font.BOLD, 18);
 
     //rectengle for games board 
     int gridx = 230;
@@ -93,13 +99,12 @@ public class GUI extends javax.swing.JFrame {
     int gridh = 300;
 
     //cards space and design
-    int cardspacing = 10;
-    int cardedgesofting = 10;
-    int cardtw = gridw / 8;
-    int cardth = gridh / 2;
-    int cardaw = cardtw - 2 * cardspacing;
-    int cardah = cardth - 2 * cardspacing;
-
+   /* int cardspacing = 10;
+     int cardedgesofting = 10;
+     int cardtw = gridw / 8;
+     int cardth = gridh / 2;
+     int cardaw = cardtw - 2 * cardspacing;
+     int cardah = cardth - 2 * cardspacing;*/
     //players space and cards model size design
     int playergridx = 230;
     int playergridy = 520;
@@ -125,6 +130,17 @@ public class GUI extends javax.swing.JFrame {
     JButton t8 = new JButton();
     JButton t9 = new JButton();
     JButton t10 = new JButton();
+
+    JButton a1 = new JButton();
+    JButton a2 = new JButton();
+    JButton a3 = new JButton();
+    JButton a4 = new JButton();
+    JButton a5 = new JButton();
+    JButton a6 = new JButton();
+    JButton a7 = new JButton();
+    JButton a8 = new JButton();
+    JButton a9 = new JButton();
+    JButton a10 = new JButton();
 
     //making array list for 5 terms
     ArrayList<Cards> allCards = new ArrayList<Cards>();
@@ -152,7 +168,6 @@ public class GUI extends javax.swing.JFrame {
         this.setContentPane(board);
         this.setLayout(null);
 
-       
         //adding button on the board
         p1.setBounds(playergridx + 0 * 83 + 20, playergridy + 15, 83, 120);
         p1.setBackground(Color.DARK_GRAY);
@@ -195,64 +210,163 @@ public class GUI extends javax.swing.JFrame {
         t1.setBackground(Color.DARK_GRAY);
         t1.setBorder(null);
         t1.setOpaque(false);
+        t1.setContentAreaFilled(false);
+        t1.setBorderPainted(false);
 
         board.add(t1);
         t2.setBounds(gridx + 1 * 83 + 20, gridy + 15, 83, 120);
         t2.setBackground(Color.DARK_GRAY);
         t2.setBorder(null);
         t2.setOpaque(false);
+        t2.setContentAreaFilled(false);
+        t2.setBorderPainted(false);
 
         board.add(t2);
         t3.setBounds(gridx + 2 * 83 + 20, gridy + 15, 83, 120);
         t3.setBackground(Color.DARK_GRAY);
         t3.setBorder(null);
         t3.setOpaque(false);
+        t3.setContentAreaFilled(false);
+        t3.setBorderPainted(false);
 
         board.add(t3);
         t4.setBounds(gridx + 3 * 83 + 20, gridy + 15, 83, 120);
         t4.setBackground(Color.DARK_GRAY);
         t4.setBorder(null);
         t4.setOpaque(false);
+        t4.setContentAreaFilled(false);
+        t4.setBorderPainted(false);
 
         board.add(t4);
         t5.setBounds(gridx + 4 * 83 + 20, gridy + 15, 83, 120);
         t5.setBackground(Color.DARK_GRAY);
         t5.setBorder(null);
         t5.setOpaque(false);
+        t5.setContentAreaFilled(false);
+        t5.setBorderPainted(false);
 
         board.add(t5);
         t6.setBounds(gridx + 5 * 83 + 20, gridy + 15, 83, 120);
         t6.setBackground(Color.DARK_GRAY);
         t6.setBorder(null);
         t6.setOpaque(false);
+        t6.setContentAreaFilled(false);
+        t6.setBorderPainted(false);
 
         board.add(t6);
         t7.setBounds(gridx + 6 * 83 + 20, gridy + 15, 83, 120);
         t7.setBackground(Color.DARK_GRAY);
         t7.setBorder(null);
         t7.setOpaque(false);
+        t7.setContentAreaFilled(false);
+        t7.setBorderPainted(false);
 
         board.add(t7);
         t8.setBounds(gridx + 7 * 83 + 20, gridy + 15, 83, 120);
         t8.setBackground(Color.DARK_GRAY);
         t8.setBorder(null);
         t8.setOpaque(false);
+        t8.setContentAreaFilled(false);
+        t8.setBorderPainted(false);
 
         board.add(t8);
         t9.setBounds(gridx + 8 * 83 + 20, gridy + 15, 83, 120);
         t9.setBackground(Color.GRAY);
         t9.setBorder(null);
         t9.setOpaque(false);
+        t9.setContentAreaFilled(false);
+        t9.setBorderPainted(false);
 
         board.add(t9);
         t10.setBounds(gridx + 9 * 83 + 20, gridy + 15, 83, 120);
         t10.setBackground(Color.GRAY);
         t10.setBorder(null);
         t10.setOpaque(false);
-         //t10.setContentAreaFilled(false);
-         //t10.setBorderPainted(false);
+        t10.setContentAreaFilled(false);
+        t10.setBorderPainted(false);
 
         board.add(t10);
+
+        a1.setBounds(gridx + 0 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a1.setBackground(Color.DARK_GRAY);
+        a1.setVisible(true);
+        a1.setBorder(null);
+        a1.setOpaque(false);
+        a1.setContentAreaFilled(false);
+        a1.setBorderPainted(false);
+
+        board.add(a1);
+        a2.setBounds(gridx + 1 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a2.setBackground(Color.DARK_GRAY);
+        a2.setBorder(null);
+        a2.setOpaque(false);
+        a2.setContentAreaFilled(false);
+        a2.setBorderPainted(false);
+
+        board.add(a2);
+        a3.setBounds(gridx + 2 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a3.setBackground(Color.DARK_GRAY);
+        a3.setBorder(null);
+        a3.setOpaque(false);
+        a3.setContentAreaFilled(false);
+        a3.setBorderPainted(false);
+
+        board.add(a3);
+        a4.setBounds(gridx + 3 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a4.setBackground(Color.DARK_GRAY);
+        a4.setBorder(null);
+        a4.setOpaque(false);
+        a4.setContentAreaFilled(false);
+        a4.setBorderPainted(false);
+
+        board.add(a4);
+        a5.setBounds(gridx + 4 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a5.setBackground(Color.DARK_GRAY);
+        a5.setBorder(null);
+        a5.setOpaque(false);
+        a5.setContentAreaFilled(false);
+        a5.setBorderPainted(false);
+
+        board.add(a5);
+        a6.setBounds(gridx + 5 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a6.setBackground(Color.DARK_GRAY);
+        a6.setBorder(null);
+        a6.setOpaque(false);
+        a6.setContentAreaFilled(false);
+        a6.setBorderPainted(false);
+
+        board.add(a6);
+        a7.setBounds(gridx + 6 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a7.setBackground(Color.DARK_GRAY);
+        a7.setBorder(null);
+        a7.setOpaque(false);
+        a7.setContentAreaFilled(false);
+        a7.setBorderPainted(false);
+
+        board.add(a7);
+        a8.setBounds(gridx + 7 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a8.setBackground(Color.DARK_GRAY);
+        a8.setBorder(null);
+        a8.setOpaque(false);
+        a8.setContentAreaFilled(false);
+        a8.setBorderPainted(false);
+
+        board.add(a8);
+        a9.setBounds(gridx + 8 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a9.setBackground(Color.GRAY);
+        a9.setBorder(null);
+        a9.setOpaque(false);
+        a9.setContentAreaFilled(false);
+        a9.setBorderPainted(false);
+
+        board.add(a9);
+        a10.setBounds(gridx + 9 * 83 + 20, gridy + 15 + 130, 83, 120);
+        a10.setBackground(Color.GRAY);
+        a10.setBorder(null);
+        a10.setOpaque(false);
+        a10.setContentAreaFilled(false);
+        a10.setBorderPainted(false);
+        board.add(a10);
 
         //creating cards from Cards class
         String shapeS1 = null;
@@ -353,74 +467,111 @@ public class GUI extends javax.swing.JFrame {
 
         // you.sort();
         //check wheather it's working or not
-/*
         for (Cards c : you) {
-         System.out.println("you have card " + c.name + " of " + c.shape+c.card_value);
-         }
-         for (Cards c : player1) {
-         System.out.println("player1 has card " + c.name + " of " + c.shape+c.card_value);
-         }
-         for (Cards c : player2) {
-         System.out.println("player2 has card " + c.name + " of " + c.shape+c.card_value);
-         }
-         for (Cards c : player3) {
-         System.out.println("player3 has card " + c.name + " of " + c.shape+c.card_value);
-         }
-         for (Cards c : budget_cards) {
-         System.out.println("budget " + c.name + " of " + c.shape+c.card_value);
-         }
-         for (Cards c : board_cards) {
-         System.out.println("remain in board " + c.name + " of " + c.shape+c.card_value);
-         }*/
-         
+            System.out.println("you have card " + c.name + " of " + c.shape + c.card_value);
+        }
+        for (Cards c : player1) {
+            System.out.println("player1 has card " + c.name + " of " + c.shape + c.card_value);
+        }
+        for (Cards c : player2) {
+            System.out.println("player2 has card " + c.name + " of " + c.shape + c.card_value);
+        }
+        for (Cards c : player3) {
+            System.out.println("player3 has card " + c.name + " of " + c.shape + c.card_value);
+        }
+        for (Cards c : budget_cards) {
+            System.out.println("budget " + c.name + " of " + c.shape + c.card_value);
+        }
+        for (Cards c : board_cards) {
+            System.out.println("remain in board " + c.name + " of " + c.shape + c.card_value);
+        }
+
         this.setIconImage(jicon);
-        
+
         JTextField jf = new JTextField();
         jf.setBackground(Color.DARK_GRAY);
         jf.setBounds(playergridx + 280, playergridy + playergridh + 5, 80, 45);
         jf.setVisible(true);
         jf.setFont(font);
         jf.setForeground(Color.yellow);
+        jf.setBorder(null);
         this.add(jf);
         
-        for(int y=0;y<10;y++)
-            isempty[y]=true;
+        
+        JTextField jfb = new JTextField();
+        jfb.setBackground(Color.DARK_GRAY);
+        jfb.setBounds(0, 0, 260, 105);
+        jfb.setVisible(true);
+        jfb.setBackground(Color.black);
+        jfb.setFont(font2);
+        jfb.setForeground(Color.yellow);
+        jfb.setOpaque(true);
+        jfb.setBorder(null);
+        this.add(jfb);
         
 
-        p1.addActionListener(new ActionListener() {
+        for (int y = 0; y < 10; y++) {
+            isempty[y] = true;
+        }
+        
+
+       p1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int maxx = 0;
+                music();
                 jf.setText(" ");
+                jfb.setText(" ");
+                System.out.println(board_cards.size());
                 if (is(you.get(0)) == true) {
                     maxx = maxi(you.get(0));
-                }
-                else{
+                } else {
                     board_cards.add(you.get(0));
                 }
-                maxxi=maxxi+maxx;
+              /*  if (is(budget_cards.get(budget_cards.size() - 1)) == true) {
+                    
+                    maxx = maxx + maxi(budget_cards.get(budget_cards.size() - 1));
+                    isempty[board_cards.size()-1]=true;
+                    budget_cards.remove(budget_cards.size() - 1);
+                } else {
+                    board_cards.add(budget_cards.get(budget_cards.size() - 1));
+                }//*/
+                maxxi = maxxi + maxx;
                 String str = Integer.toString(maxxi);
                 jf.setText(str);
                 p1.setVisible(false);
+                jfb.setText("you played "+you.get(0).name+" of "+you.get(0).shape);                
                 System.out.println(maxx);
             }
-        });
+        }); 
 
         p2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int maxx = 0;
+                jfb.setText(" ");
+                System.out.println(board_cards.size());
                 if (is(you.get(1)) == true) {
+                    
                     maxx = maxi(you.get(1));
-                }
-                else{
+                } else {
                     board_cards.add(you.get(1));
                 }
+              /*  if (is(budget_cards.get(budget_cards.size() - 1)) == true) {
+                    
+                    maxx = maxx + maxi(budget_cards.get(budget_cards.size() - 1));
+                    isempty[board_cards.size()-1]=true;
+                    budget_cards.remove(budget_cards.size() - 1);
+                } else {
+                   
+                    board_cards.add(budget_cards.get(budget_cards.size() - 1));
+                }//*/
                 jf.setText(" ");
-                maxxi=maxxi+maxx;
+                maxxi = maxxi + maxx;
                 String str = Integer.toString(maxxi);
                 jf.setText(str);
                 p2.setVisible(false);
+                jfb.setText("you played "+you.get(1).name+" of "+you.get(1).shape);
                 System.out.println(maxx);
             }
         });
@@ -429,17 +580,28 @@ public class GUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int maxx = 0;
+                jfb.setText(" ");
+                System.out.println(board_cards.size());
                 if (is(you.get(2)) == true) {
+                    
                     maxx = maxi(you.get(2));
-                }
-                else{
+                } else {
                     board_cards.add(you.get(2));
                 }
+             /*  if (is(budget_cards.get(budget_cards.size() - 1)) == true) {
+                    
+                    maxx = maxx + maxi(budget_cards.get(budget_cards.size() - 1));
+                    isempty[board_cards.size()-1]=true;
+                    budget_cards.remove(budget_cards.size() - 1);
+                } else {
+                    board_cards.add(budget_cards.get(budget_cards.size() - 1));
+                }//*/
                 jf.setText(" ");
-                maxxi=maxxi+maxx;
+                maxxi = maxxi + maxx;
                 String str = Integer.toString(maxxi);
                 jf.setText(str);
                 p3.setVisible(false);
+                jfb.setText("you played "+you.get(2).name+" of "+you.get(2).shape);
                 System.out.println(maxx);
             }
         });
@@ -448,17 +610,28 @@ public class GUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int maxx = 0;
+                jfb.setText(" ");
+                System.out.println(board_cards.size());
                 if (is(you.get(3)) == true) {
+                    
                     maxx = maxi(you.get(3));
-                }
-                else{
+                } else {
                     board_cards.add(you.get(3));
                 }
+              /* if (is(budget_cards.get(budget_cards.size() - 1)) == true) {
+                    
+                    maxx = maxx + maxi(budget_cards.get(budget_cards.size() - 1));
+                    isempty[board_cards.size()-1]=true;
+                    budget_cards.remove(budget_cards.size() - 1);
+                } else {
+                    board_cards.add(budget_cards.get(budget_cards.size() - 1));
+                }//*/
                 jf.setText(" ");
-                maxxi=maxxi+maxx;
+                maxxi = maxxi + maxx;
                 String str = Integer.toString(maxxi);
                 jf.setText(str);
                 p4.setVisible(false);
+                jfb.setText("you played "+you.get(3).name+" of "+you.get(3).shape);
                 System.out.println(maxx);
             }
         });
@@ -467,17 +640,28 @@ public class GUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int maxx = 0;
+                jfb.setText(" ");
+                System.out.println(board_cards.size());
                 if (is(you.get(4)) == true) {
+                   
                     maxx = maxi(you.get(4));
-                }
-                else{
+                } else {
                     board_cards.add(you.get(4));
                 }
+               /* if (is(budget_cards.get(budget_cards.size() - 1)) == true) {
+                   
+                    maxx = maxx + maxi(budget_cards.get(budget_cards.size() - 1));
+                    isempty[board_cards.size()-1]=true;
+                    budget_cards.remove(budget_cards.size() - 1);
+                } else {
+                    board_cards.add(budget_cards.get(budget_cards.size() - 1));
+                }//*/
                 jf.setText(" ");
-                maxxi=maxxi+maxx;
+                maxxi = maxxi + maxx;
                 String str = Integer.toString(maxxi);
                 jf.setText(str);
                 p5.setVisible(false);
+                jfb.setText("you played "+you.get(4).name+" of "+you.get(4).shape);
                 System.out.println(maxx);
             }
         });
@@ -486,43 +670,51 @@ public class GUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int maxx = 0;
+                jfb.setText(" ");
+                System.out.println(board_cards.size());
                 if (is(you.get(5)) == true) {
+                    
                     maxx = maxi(you.get(5));
-                }
-                else{
+                } else {
                     board_cards.add(you.get(5));
                 }
+               /*if (is(budget_cards.get(budget_cards.size() - 1)) == true) {
+                    
+                    maxx = maxx + maxi(budget_cards.get(budget_cards.size() - 1));
+                    isempty[board_cards.size()-1]=true;
+                    budget_cards.remove(budget_cards.size() - 1);
+                } else {
+                    board_cards.add(budget_cards.get(budget_cards.size() - 1));
+                }//*/
                 jf.setText(" ");
-                maxxi=maxxi+maxx;
+                maxxi = maxxi + maxx;
                 String str = Integer.toString(maxxi);
                 jf.setText(str);
                 p6.setVisible(false);
+                jfb.setText("you played "+you.get(5).name+" of "+you.get(5).shape);
                 System.out.println(maxx);
             }
         });
-        
-        
 
     }
 
     public class Background extends JPanel {
 
         public void paintComponent(Graphics g) {
-            
 
             g.drawImage(image, 0, 0, null);   //background image
             g.drawImage(image1, gridx - 200, gridy + 120, null);
             g.drawImage(image1, gridw + 320, gridy + 120, null);
             g.drawImage(image1, gridw - 250, 30, null);
             g.drawImage(image1, 1000, 30, null);
-
+            
+            
+            
             g.setColor(Color.DARK_GRAY);
             g.fillRect(playergridx + 185, playergridy + playergridh + 5, 170, 45);
             g.setFont(fontcard);
             g.setColor(Color.yellow);
             g.drawString("You : ", playergridx + 200, playergridy + playergridh + 38);
-            
-            
 
             g.setColor(Color.DARK_GRAY);
             g.fillRect(gridx + 585, gridy - 115, 170, 45);
@@ -548,10 +740,7 @@ public class GUI extends javax.swing.JFrame {
             g.setColor(Color.yellow);
             g.drawString("Player2 : ", gridx + 195, gridy - 85);
 
-            //two pre-defined rectengle for main board designing
-            g.setColor(Color.green);
-            g.drawRect(gridx, gridy, gridw, gridh);
-            g.drawRect(playergridx, playergridy, playergridw, playergridh);
+            
 
             //showing the cards on the table
             int j = 0;
@@ -726,15 +915,10 @@ public class GUI extends javax.swing.JFrame {
                 } else {
                     break;
                 }
-                isempty[j]=false;
+                isempty[j] = false;
                 j++;
             }
 
-    
-            
-            
-            
-            
             //for you cards showing
             j = 0;
             for (Cards c1 : you) {
@@ -915,67 +1099,118 @@ public class GUI extends javax.swing.JFrame {
             p4.setIcon(arrbutton[3]);
             p5.setIcon(arrbutton[4]);
             p6.setIcon(arrbutton[5]);
+
+            t1.setIcon(arrbutton1[0]);
+            t2.setIcon(arrbutton1[1]);
+            t3.setIcon(arrbutton1[2]);
+            t4.setIcon(arrbutton1[3]);
+            t5.setIcon(arrbutton1[4]);
+            t6.setIcon(arrbutton1[5]);
+            t7.setIcon(arrbutton1[6]);
+            t8.setIcon(arrbutton1[7]);
+            t9.setIcon(arrbutton1[8]);
+            t10.setIcon(arrbutton1[9]);
+            a1.setIcon(arrbutton1[10]);
+            a2.setIcon(arrbutton1[11]);
+            a3.setIcon(arrbutton1[12]);
+            a4.setIcon(arrbutton1[13]);
+            a5.setIcon(arrbutton1[14]);
+            a6.setIcon(arrbutton1[15]);
+            a7.setIcon(arrbutton1[16]);
+            a8.setIcon(arrbutton1[17]);
+            a9.setIcon(arrbutton1[18]);
+            a10.setIcon(arrbutton1[19]);
+            
+
+            if(isempty[0]==false)
+             t1.setIcon(arrbutton1[0]);
+             else t1.setIcon(null);
+             if(isempty[1]==false)
+             t2.setIcon(arrbutton1[1]);
+             else t2.setIcon(null);
+             if(isempty[2]==false)
+             t3.setIcon(arrbutton1[2]);
+             else t3.setIcon(null);
+             if(isempty[3]==false)
+             t4.setIcon(arrbutton1[3]);
+             else t4.setIcon(null);
+             if(isempty[4]==false)
+             t5.setIcon(arrbutton1[4]);
+             else t5.setIcon(null);
+             if(isempty[5]==false)
+             t6.setIcon(arrbutton1[5]);
+             else t6.setIcon(null);
+             if(isempty[6]==false)
+             t7.setIcon(arrbutton1[6]);
+             else t7.setIcon(null);
+             if(isempty[7]==false)
+             t8.setIcon(arrbutton1[7]);
+             else t8.setIcon(null);
+             if(isempty[8]==false)
+             t9.setIcon(arrbutton1[8]);
+             else t9.setIcon(null);
+             if(isempty[9]==false)
+             t10.setIcon(arrbutton1[9]);
+             else t10.setIcon(null);
+            
             
              
-            t1.setIcon(arrbutton1[0]);
-            t2.setIcon(arrbutton1[1]);
-            t3.setIcon(arrbutton1[2]);
-            t4.setIcon(arrbutton1[3]);
-            t5.setIcon(arrbutton1[4]);
-            t6.setIcon(arrbutton1[5]);
-            t7.setIcon(arrbutton1[6]);
-            t8.setIcon(arrbutton1[7]);
-            t9.setIcon(arrbutton1[8]);
-            t10.setIcon(arrbutton1[9]);
+             
+             if(isempty[10]==false)
+             a1.setIcon(arrbutton1[10]);
+             else a1.setIcon(null);
+             if(isempty[11]==false)
+             a2.setIcon(arrbutton1[11]);
+             else a2.setIcon(null);
+             if(isempty[12]==false)
+             a3.setIcon(arrbutton1[12]);
+             else a3.setIcon(null);
+             if(isempty[13]==false)
+             a4.setIcon(arrbutton1[13]);
+             else a4.setIcon(null);
+             if(isempty[14]==false)
+             a5.setIcon(arrbutton1[14]);
+             else a5.setIcon(null);
+             if(isempty[15]==false)
+             a6.setIcon(arrbutton1[15]);
+             else a6.setIcon(null);
+             if(isempty[16]==false)
+             a7.setIcon(arrbutton1[16]);
+             else a7.setIcon(null);
+             if(isempty[17]==false)
+             a8.setIcon(arrbutton1[17]);
+             else a8.setIcon(null);
+             if(isempty[18]==false)
+             a9.setIcon(arrbutton1[18]);
+             else a9.setIcon(null);
+             if(isempty[19]==false)
+             a10.setIcon(arrbutton1[19]);
+             else a10.setIcon(null);
+            
+           
             
             
             
             
+                
+               
+                
             
-            
-           /* if(isempty[0]==false)
-            t1.setIcon(arrbutton1[0]);
-            else t1.setIcon(null);
-            if(isempty[1]==false)
-            t2.setIcon(arrbutton1[1]);
-            else t2.setIcon(null);
-            if(isempty[2]==false)
-            t3.setIcon(arrbutton1[2]);
-            else t3.setIcon(null);
-            if(isempty[3]==false)
-            t4.setIcon(arrbutton1[3]);
-            else t4.setIcon(null);
-            if(isempty[4]==false)
-            t5.setIcon(arrbutton1[4]);
-            else t5.setIcon(null);
-            if(isempty[5]==false)
-            t6.setIcon(arrbutton1[5]);
-            else t6.setIcon(null);
-            if(isempty[6]==false)
-            t7.setIcon(arrbutton1[6]);
-            else t7.setIcon(null);
-            if(isempty[7]==false)
-            t8.setIcon(arrbutton1[7]);
-            else t8.setIcon(null);
-            if(isempty[8]==false)
-            t9.setIcon(arrbutton1[8]);
-            else t9.setIcon(null);
-            if(isempty[9]==false)
-            t10.setIcon(arrbutton1[9]);
-            else t10.setIcon(null);*/
             
         }
     }
 
     public boolean is(Cards crd) {
         boolean flag = false;
-        int s=board_cards.size();
+        int j=1;
+        int s = board_cards.size();
         for (Cards c : board_cards) {
             if (crd.symbol == c.symbol) {
                 flag = true;
                 break;
             }
         }
+        j++;
         return flag;
     }
 
@@ -984,32 +1219,36 @@ public class GUI extends javax.swing.JFrame {
         for (Cards c : board_cards) {
             if (crd.symbol == c.symbol) {
                 sum = sum + c.card_value;
-              board_cards.remove(j);
-                /*if(j==0)
-                    t2.setIcon(null);
-                else if(j==1)
-                    t3.setIcon(null);
-                else if(j==2)
-                    t4.setIcon(null);
-                else if(j==3)
-                    t5.setIcon(null);
-                 if(s==1)
-                    t1.setIcon(null);
-                else if(s==2)
-                    t2.setIcon(null);
-                else if(s==3)
-                    t3.setIcon(null);
-                else if(s==4)
-                    t4.setIcon(null);
-                 */
+                isempty[board_cards.size()-1]=true;
+                board_cards.remove(j);
+               
+
+                isempty[j]=true;
                 
-                //isempty[j]=true;
-                //isempty[s]=true;
+                
                 break;
             }
             j++;
         }
         return sum;
     }
+
+    
+    
+    public void music(){
+        AudioPlayer a = AudioPlayer.player;
+        AudioStream b;
+        AudioData d;
+        ContinuousAudioDataStream c = null;
+        try{
+            b=new AudioStream(new FileInputStream("clicked.mp3"));
+            d=b.getData();
+            c=new ContinuousAudioDataStream(d);
+        }catch(IOException e){
+            
+        }
+        
+    }
+
 
 }
