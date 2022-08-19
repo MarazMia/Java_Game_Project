@@ -27,7 +27,7 @@ Only Java programming language was used for this project.
 
 ---
 For any inquiry please contact
-1. [Maraz](maraj262000@gmail.com)
+1. [Maraz](https://marazmia.github.io/Personal_Website/)
 ---
 
 ## License and Agreement
